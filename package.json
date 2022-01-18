@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Kuckelkorn/Streetscapes/issues"
   },
-  "homepage": "https://github.com/Kuckelkorn/Streetscapes#readme"
+  "homepage": "https://github.com/Kuckelkorn/Streetscapes#readme",
+  "dependencies": {
+    "d3": "^7.3.0"
+  }
 }

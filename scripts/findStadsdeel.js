@@ -5,6 +5,7 @@ import getData from './helpers/getData.js'
 
 function getStadsdelen(){
   const stadsdelen = fetch(`https://api.data.amsterdam.nl/v1/gebieden/stadsdelen/?_format=geojson`)
+  // createMap(stadsdelen)
   stadsdelen
     .then(response => response.json())
     .then(data => {
