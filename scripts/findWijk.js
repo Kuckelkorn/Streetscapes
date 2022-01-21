@@ -12,7 +12,7 @@ function getWijken(stadsdeel){
       return data
     })
     .then(data => {
-      const div = document.querySelectorAll("div")
+      const div = document.querySelectorAll("#map")
       for ( let i = 0; i < div.length; i++){
         div[i].remove()
       }

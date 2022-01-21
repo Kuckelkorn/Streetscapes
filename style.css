@@ -1,0 +1,134 @@
+html{
+  margin: 0px;
+  height: auto;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    /* margin: 25px auto; */
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: rgb(0, 0, 0);
+    /* text-align: center; */
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: stretch;
+    gap: 20px 0px;
+    margin: 0px;
+  
+  }
+
+.sectie-1{
+  background-color: blue;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-columns: 0.55fr 0.45fr;
+  grid-template-rows: 37em 20em;
+}
+
+.block-message{
+  background-color: #167A74;
+  grid-row-start: 1;
+}
+
+.img{
+  background-color: honeydew;
+  grid-row-start: 1;
+}
+
+.iconen {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: #f2f2f2;
+  height: 22em;
+  width: auto;
+}
+
+
+.sectie-2{
+  background-color: blueviolet;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.sectie-3{
+  height: 59em;
+  width: 100%;
+  grid-row-start: 3;
+  background-color: aqua;
+  grid-column-start: 1;
+  grid-column-end: span col3-start;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 7em 52em;
+}
+
+.dataVeld{
+  background-color: #f2f2f2;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  height: 7em;
+}
+
+.visVeld{
+  background-color: #167A74;
+  grid-column-start: 1;
+  position: relative;
+}
+
+.buurtButton{
+  width: 50px;
+  height: 50px;
+  background-color: #FEC813;
+  left: 16em;
+  top: 1em;
+  position: relative;
+}
+
+#kaart {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  height: 69.3em;
+  width: auto;
+}
+
+#kaart1 {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  height: 69.3em;
+  width: auto;
+}
+
+.hide{
+  visibility: hidden;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.legend {
+  line-height: 18px;
+  color: #555;
+}
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
