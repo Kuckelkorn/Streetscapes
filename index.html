@@ -5,19 +5,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  <script src="gemAdam.js"></script>
+  <script src="gemAdam1.js"></script>
+  <link rel="stylesheet" href="style.css">
   <script src="./scripts/index.js" type="module" defer></script>
   <title>Document</title>
 </head>
 <body>
-  <section id='tool'>
-    <div id="datavisualisatie">
+  <div class="sectie-1">
+    <div class="block-message"></div>
+    <div class="img"></div>
+    <div class="iconen"></div>
+</div>
+<div class="sectie-2"></div>
+<div class="sectie-3">
+    <div class="dataVeld"></div>
+    <div class="visVeld">
+      <button class="buurtButton" ></button>
       <svg id="woonoppervlakte"></svg>
       <svg id="eigendomsverhouding"></svg>
       <svg id="leeftijd_bevolking"></svg>
     </div>
-    <div id="map">
-
-    </div>
-  </section>
+    <div id="kaart"></div>
+    <div id="kaart1" class="hide"></div>
+</div>
 </body>
 </html>
+
