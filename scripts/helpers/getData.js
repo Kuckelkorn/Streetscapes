@@ -59,7 +59,7 @@ async function getData (code) {
   const objectArea = Object.assign(extra, {housing:housing}, {oppervlakte:oppervlakte}, {age:age})
   console.log(objectArea.oppervlakte)
 
-  createBar('#woonoppervlakte', objectArea.oppervlakte)
+  createPie('#woonoppervlakte', objectArea.oppervlakte)
   createBar('#leeftijd_bevolking', objectArea.age)
   createPie('#eigendomsverhouding', objectArea.housing)
 }
