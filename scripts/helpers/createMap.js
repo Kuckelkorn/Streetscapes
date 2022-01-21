@@ -4,6 +4,7 @@ TOGGLE BUTTON
 
 =========================================*/
 function createMap(){
+  
     document.querySelector('button').addEventListener('click', function(event) {
     event.preventDefault();
     console.log("click")
@@ -35,7 +36,7 @@ function createMap(){
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 15,
       minZoom: 11,
-      id: 'voegdoe/ckyoh6re0h4b016n2ge16cpfo',
+      id: 'voegdoe/ckyoeih10eoom15qqn81cut07',
       tileSize: 512,
       zoomOffset: -1,
       accessToken: 'pk.eyJ1Ijoidm9lZ2RvZSIsImEiOiJja3lrOHNkOWgyYzg5Mm5xaGUyZzNjaTBrIn0.ks4WYqbTFNJOrr8TQj8shw'
@@ -186,7 +187,7 @@ function createMap(){
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 15,
       minZoom: 11,
-      id: 'voegdoe/ckyoh6re0h4b016n2ge16cpfo', 
+      id: 'voegdoe/ckyoeih10eoom15qqn81cut07', 
       tileSize: 512,
       zoomOffset: -1,
       accessToken: 'pk.eyJ1Ijoidm9lZ2RvZSIsImEiOiJja3lrOHNkOWgyYzg5Mm5xaGUyZzNjaTBrIn0.ks4WYqbTFNJOrr8TQj8shw'
