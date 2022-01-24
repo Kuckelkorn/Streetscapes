@@ -1,7 +1,6 @@
 import getStadsdelen from "./findStadsdeel.js";
-import getData from "./helpers/getData.js";
-import createMap from './helpers/createMap.js'
+import createData from "./helpers/createData.js";
 
-getData('STAD')
-// getStadsdelen();
-createMap();
+createData('STAD')
+getStadsdelen();
+// createMap();

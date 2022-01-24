@@ -1,13 +1,16 @@
 import createCard from './helpers/createCard.js'
-import getData from './helpers/getData.js'
 import splitString from './helpers/splitID.js'
 import getBuurten from "./findBuurt.js"
+import createMap from './helpers/createMap.js'
+import createData from './helpers/createData.js'
 
-function getWijken(stadsdeel){
-  const wijken = fetch(`https://api.data.amsterdam.nl/v1/gebieden/wijken/?_format=geojson&ligtInStadsdeel.identificatie=${stadsdeel}`)
+function getWijken(){
+  // const wijken = fetch(`https://api.data.amsterdam.nl/v1/gebieden/wijken/?_format=geojson&ligtInStadsdeel.identificatie=${stadsdeel}`)
+  const wijken = fetch(`https://api.data.amsterdam.nl/v1/gebieden/wijken/?_format=geojson`)
   wijken
     .then(response => response.json())
     .then(data => {
+      createMap(data)
       data = data.features
       return data
     })
@@ -18,7 +21,7 @@ function getWijken(stadsdeel){
       }
       data.map((obj) => {
         const id = splitString(obj.properties.id)
-        createCard(obj.properties , () => getBuurten(id), () => getData(obj.properties.code))
+        createCard(obj.properties , () => getBuurten(id), () => createData(obj.properties.code))
       })
     })
 }

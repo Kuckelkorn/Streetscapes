@@ -1,7 +1,8 @@
 import createCard from './helpers/createCard.js'
 import splitString from './helpers/splitID.js'
 import getWijken from './findWijk.js'
-import getData from './helpers/getData.js'
+import createMap from './helpers/createMap.js'
+import createData from './helpers/createData.js'
 
 function getStadsdelen(){
   const stadsdelen = fetch(`https://api.data.amsterdam.nl/v1/gebieden/stadsdelen/?_format=geojson`)
@@ -9,6 +10,7 @@ function getStadsdelen(){
   stadsdelen
     .then(response => response.json())
     .then(data => {
+      createMap(data)
       data = data.features
       return data
     })
@@ -19,7 +21,7 @@ function getStadsdelen(){
       }
       data.map((obj) => {
         const id = splitString(obj.properties.id)
-        createCard(obj.properties , () => getWijken(id), () => getData(obj.properties.code))
+        createCard(obj.properties , () => getWijken(id), () => createData(obj.properties.code))
       })
     })
 }

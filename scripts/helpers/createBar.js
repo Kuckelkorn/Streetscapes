@@ -1,7 +1,6 @@
 // import * as d3 from 'd3'
 
 const createBarChart = (el, data) => {
-  console.log(data)
   const margin = {top: 40, bottom: 10, left: 120, right: 20}
   const width = 300 - margin.left - margin.right
   const height = 300 - margin.top - margin.bottom
@@ -10,7 +9,6 @@ const createBarChart = (el, data) => {
   .attr('width', width+margin.left+margin.right)
   .attr('height', height+margin.top+margin.bottom)
 
-  console.log(svg)
   // Create groups in the svg and make sure that the margins are the same this is necessary otherwise the legend is not there
   const g = svg.append('g')
   .attr('transform', `translate(${margin.left},${margin.top})`)
@@ -23,7 +21,6 @@ const createBarChart = (el, data) => {
   const g_yAxis = g.append('g').attr('class','y axis')
 
   function update(data){
-    console.log('update')
     // Defining how to display the data in the dom
     xScale.domain([0, d3.max(data, (d) => d.waarde)])
     yScale.domain(data.map((d) => d.indicator))

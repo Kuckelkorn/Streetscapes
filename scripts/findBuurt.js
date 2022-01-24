@@ -1,11 +1,14 @@
 import createCard from './helpers/createCard.js'
-import getData from './helpers/getData.js'
+import createData from './helpers/createData.js'
+import createMap from './helpers/createMap.js'
 
-function getBuurten(wijk){
-  const buurten = fetch(`https://api.data.amsterdam.nl/v1/gebieden/buurten/?_format=geojson&ligtInWijk.identificatie=${wijk}`)
+function getBuurten(){
+  // const buurten = fetch(`https://api.data.amsterdam.nl/v1/gebieden/buurten/?_format=geojson&ligtInWijk.identificatie=${wijk}`)
+  const buurten = fetch(`https://api.data.amsterdam.nl/v1/gebieden/buurten/?_format=geojson`)
   buurten
     .then(response => response.json())
     .then(data => {
+      createMap(data)
       data = data.features
       return data
     })
@@ -15,7 +18,7 @@ function getBuurten(wijk){
         div[i].remove()
       }
       data.map((obj) => {
-        createCard(obj.properties, () => getData(obj.properties.code))
+        createCard(obj.properties, () => createData(obj.properties.code))
       })
     })
 }
