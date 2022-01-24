@@ -29,6 +29,23 @@ function createMap(data){
   L.geoJSON(data).addTo(map)
 
 
+  const btn = document.querySelector('#toggle')
+  btn.addEventListener('click', (e) =>{
+    e.preventDefault()
+    if (btn.innerHTML === 'Wijken'){
+      if(map != undefined){
+        map.remove()
+        getWijken();
+        btn.innerHTML = "Buurten"
+      }
+    } else {
+      if (map != undefined){
+        map.remove()
+        getBuurten()
+        btn.innerHTML = "Wijken"
+      }
+    }
+  })
   /*=========================================
 
   STYLING 
@@ -91,30 +108,28 @@ function createMap(data){
   }
 
   // Deze functie zorgt ervoor dat er ingezoomd wordt op het target, deze zal voor "click" gebruikt worden
-  function zoomIn(target){
-    console.log(target)
-    map.fitBounds(target)
-  }
 
   function Clickaction(e) {
-    const id = splitString(e.target.feature.id)
-    console.log(id)
-    if (id === 'stadsdelen'){
-      if (map != undefined) {
-        map.remove()
-        getWijken()
-        map.fitBounds(e.target.getBounds())
-        zoomIn(e.target.getBounds())
-        createData(e.target.feature.properties.code)
-      }
-    }
-    else if (id === 'wijken'){
-      if (map != undefined) {
-        map.remove()
-        getBuurten()
-        createData(e.target.feature.properties.code)
-      }
-    }
+    // const id = splitString(e.target.feature.id)
+    // console.log(id)
+    // if (id === 'stadsdelen'){
+    //   if (map != undefined) {
+    //     map.off()
+    //     map.remove()
+    //     let newId = splitString(e.target.feature.properties.id)
+    //     getWijken(newId)
+    //     map.fitBounds(e.target.getBounds())
+    //     createData(e.target.feature.properties.code)
+    //   }
+    // }
+    // else if (id === 'wijken'){
+    //   if (map != undefined) {
+    //     map.remove()
+    //     let newId = splitString(e.target.feature.properties.id)
+    //     getBuurten(newId)
+    //     createData(e.target.feature.properties.code)
+    //   }
+    // }
     createData(e.target.feature.properties.code)
     map.fitBounds(e.target.getBounds());
   }
