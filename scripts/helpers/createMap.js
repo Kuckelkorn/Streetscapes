@@ -4,11 +4,11 @@ import createCharts from './createCharts.js';
 
 
 
-function createMap(data){
+async function createMap(data){
+  const newData = await data
   // Inladen van de openstreetmap kaart + centreren boven amsterdam
-  // Selecteren van de div 
+  // Selecteren van de div
   const map = L.map("kaart").setView([52.3546,4.9039], 11);
-  
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -21,7 +21,7 @@ function createMap(data){
   }).addTo(map);
 
   // geoJSON toevoegen aan de kaart 
-  L.geoJSON(data).addTo(map)
+  L.geoJSON(await newData).addTo(map)
 
 
   const btn = document.querySelector('#toggle')
@@ -69,30 +69,32 @@ function createMap(data){
 
   // Schaal voor de kleur adhv data
   function getColor(d) {
-    return d > 10000 ? '#004f4a' : //'#800026' :
-          d > 7500 ? '#008f83' : //'#BD0026' :
-          d >  5000 ? '#00d1c0' : //'#E31A1C' :
-          d > 2500 ? '#14ffeb' : //'#FC4E2A' :
+    return d > 15000 ? '#004f4a' : //'#800026' :
+          d > 10000 ? '#008f83' : //'#BD0026' :
+          d >  7500 ? '#00d1c0' : //'#E31A1C' :
+          d > 5000 ? '#14ffeb' : //'#FC4E2A' :
           d > 1000 ? '#57fff1' : //'#FD8D3C' : 
-          d < 1000 ? '#99fff7' : //'#FEB24C' : hahaha
+          d > 100 ? '#99fff7' : //'#FEB24C' : hahaha
           d === null ? '#dbfffc' : //'#FED976' :
                       '#ffffff';
   }
 
   // Functie die de stijl van de kaart definieert
   function style(feature) {
+   if(feature.properties.WDICHT !== undefined){
     return {
-        fillColor: getColor(feature.properties.WDICHT),
-        weight: 1.5,
-        opacity: 1,
-        color: 'white',
-        dashArray: '0',
-        fillOpacity: 0.5
-    };
+      fillColor: getColor(feature.properties.WDICHT),
+      weight: 1.5,
+      opacity: 1,
+      color: 'white',
+      dashArray: '0',
+      fillOpacity: 0.5
+      };
+    } 
   }
 
   // De nieuwe styling toevoegen aan de geoJSON
-  L.geoJSON(data, {style: style}).addTo(map);
+  L.geoJSON(await newData, {style: style}).addTo(map);
 
   // Functie voor "mouseOver", er wordt een border gecreerd rondom de buurt waarover je hovered
   // De border wordt naar voren gebracht zodat het beter te zien is, behalve in verouderde browsers
@@ -122,7 +124,7 @@ function createMap(data){
   // Deze functie zorgt ervoor dat er ingezoomd wordt op het target, deze zal voor "click" gebruikt worden
 
   function Clickaction(e) {
-    createCharts(e.target.feature.properties.code)
+    createCharts(e.target.feature.properties.code, e.target.feature.properties.naam)
     map.fitBounds(e.target.getBounds());
   }
 
@@ -136,7 +138,7 @@ function createMap(data){
   }
 
   // Hier wordt de benodigde styling daadwerkelijk toegevoegd aan de data
-  geojson = L.geoJSON(data, {
+  geojson = L.geoJSON(await newData, {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map);
@@ -166,8 +168,8 @@ function createMap(data){
   legend.onAdd = function (map) {
 
       const div = L.DomUtil.create('div', 'info legend'),
-          grades = [50000, 100000, 200000, 300000, 400000, 600000]
-          labels = [];
+          grades = [100, 1000, 5000, 7500, 10000, 15000];
+          // labels = [];
 
       // loop through our density intervals and generate a label with a colored square for each interval
       for (let i = 0; i < grades.length; i++) {
