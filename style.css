@@ -108,7 +108,7 @@ body {
 
 .sectie-3{
   grid-row-start: 3;
-  background-color: aqua;
+  /* background-color: aqua; */
   grid-column-start: 1;
   grid-column-end: span col3-start;
   display: grid;
@@ -129,20 +129,39 @@ body {
   position: relative;
 }
 
-.buurtButton{
-  width: 50px;
+#toggle{
+  width: 75px;
   height: 50px;
   background-color: var(--mainGeel);
-  left: 16em;
-  top: 1em;
-  position: relative;
+  opacity: 80%;
+  left: 26.7em;
+  top: 202em;
+  position: absolute;
+  z-index: 100;
+  border-radius: 25%;
+  /* background: white; */
+  /* background: rgba(255,255,255,0.8); */
+  box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  border: none;
+  align-items: center;
 }
 
-#kaart {
+#toggle :hover{
+  opacity: 100%;
+  
+}
+
+
+.map #kaart {
   grid-row-start: 2;
   grid-column-start: 2;
   /* height: 69.3em; */
   width: auto;
+}
+
+#kaart {
+  z-index: 1;
 }
 
 .hide{
