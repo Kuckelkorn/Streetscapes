@@ -1,13 +1,8 @@
-/*=========================================
-
-TOGGLE BUTTON
-
-=========================================*/
-
 import getBuurten from '../findBuurt.js';
 import getWijken from '../findWijk.js';
-import createData from './createData.js';
-import splitString from './splitID.js'
+import createCharts from './createCharts.js';
+
+
 
 function createMap(data){
   // Inladen van de openstreetmap kaart + centreren boven amsterdam
@@ -32,17 +27,17 @@ function createMap(data){
   const btn = document.querySelector('#toggle')
   btn.addEventListener('click', (e) =>{
     e.preventDefault()
-    if (btn.innerHTML === 'Wijken'){
+    if (btn.innerHTML === 'Buurten'){
       if(map != undefined){
         map.remove()
-        getWijken();
-        btn.innerHTML = "Buurten"
+        getBuurten();
+        btn.innerHTML = "Wijken"
       }
     } else {
       if (map != undefined){
         map.remove()
-        getBuurten()
-        btn.innerHTML = "Wijken"
+        getWijken()
+        btn.innerHTML = "Buurten"
       }
     }
   })
@@ -55,22 +50,39 @@ function createMap(data){
   // Variabele die gebruikt gaat worden voor de styling 
   let geojson;
 
+  // function findLargestVal(){
+  //   const arr = [];
+  //   data.features.map((obj) =>{
+  //     console.log(obj.properties)
+  //     arr.push(obj.properties.WDICHT)
+  //   })
+
+  //   arr = arr.filter(Number)
+  //   console.log(arr)
+  //   const number = Math.max.apply(null, arr)
+  //   console.log(number)
+  // }
+
+  // findLargestVal();
+
+  
+
   // Schaal voor de kleur adhv data
   function getColor(d) {
-    return d > 600000 ? '#004f4a' : //'#800026' :
-          d > 500000  ? '#008f83' : //'#BD0026' :
-          d > 400000  ? '#00d1c0' : //'#E31A1C' :
-          d > 300000  ? '#14ffeb' : //'#FC4E2A' :
-          d > 200000   ? '#57fff1' : //'#FD8D3C' : 
-          d > 100000   ? '#99fff7' : //'#FEB24C' : hahaha
-          d > 50000   ? '#dbfffc' : //'#FED976' :
+    return d > 10000 ? '#004f4a' : //'#800026' :
+          d > 7500 ? '#008f83' : //'#BD0026' :
+          d >  5000 ? '#00d1c0' : //'#E31A1C' :
+          d > 2500 ? '#14ffeb' : //'#FC4E2A' :
+          d > 1000 ? '#57fff1' : //'#FD8D3C' : 
+          d < 1000 ? '#99fff7' : //'#FEB24C' : hahaha
+          d === null ? '#dbfffc' : //'#FED976' :
                       '#ffffff';
   }
 
   // Functie die de stijl van de kaart definieert
   function style(feature) {
     return {
-        fillColor: getColor(feature.properties.Oppervlakte_m2),
+        fillColor: getColor(feature.properties.WDICHT),
         weight: 1.5,
         opacity: 1,
         color: 'white',
@@ -110,27 +122,7 @@ function createMap(data){
   // Deze functie zorgt ervoor dat er ingezoomd wordt op het target, deze zal voor "click" gebruikt worden
 
   function Clickaction(e) {
-    // const id = splitString(e.target.feature.id)
-    // console.log(id)
-    // if (id === 'stadsdelen'){
-    //   if (map != undefined) {
-    //     map.off()
-    //     map.remove()
-    //     let newId = splitString(e.target.feature.properties.id)
-    //     getWijken(newId)
-    //     map.fitBounds(e.target.getBounds())
-    //     createData(e.target.feature.properties.code)
-    //   }
-    // }
-    // else if (id === 'wijken'){
-    //   if (map != undefined) {
-    //     map.remove()
-    //     let newId = splitString(e.target.feature.properties.id)
-    //     getBuurten(newId)
-    //     createData(e.target.feature.properties.code)
-    //   }
-    // }
-    createData(e.target.feature.properties.code)
+    createCharts(e.target.feature.properties.code)
     map.fitBounds(e.target.getBounds());
   }
 
@@ -162,7 +154,7 @@ function createMap(data){
   // method that we will use to update the control based on feature properties passed
   info.update = function (props) {
       this._div.innerHTML = '<h4>Bevolkingsdichtheid per wijk</h4>' +  (props ?
-          '<b>' + props.Buurtnaam + '</b><br />' + props.Oppervlakte_m2 + ' people / mi<sup>2</sup>'
+          '<b>' + props.naam + '</b><br />' + props.WDICHT + ' woningen per km2'
           : 'Hover over een buurt');
   };
 
