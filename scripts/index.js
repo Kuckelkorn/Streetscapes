@@ -1,8 +1,8 @@
 import getStadsdelen from "./findStadsdeel.js";
-import getBuurten from "./findBuurt.js";
-import createData from "./helpers/createData.js";
+import getWijken from "./findWijk.js";
+import createCharts from "./helpers/createCharts.js";
 
-createData('STAD')
-getBuurten();
+createCharts('STAD')
+getWijken();
 // createMap();
 

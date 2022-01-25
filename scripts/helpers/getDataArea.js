@@ -1,10 +1,6 @@
-import createBar from './createBar.js'
-import createPie from './createPie.js'
-
-async function createData (code) {
+async function getDataArea (code) {
   const url = `https://api.data.amsterdam.nl/v1/bbga/kerncijfers/?jaar=2021&gebiedcode15=${code}&_format=json&_count=true`
   let data = await fetch(url)
-  console.log(data)
   data = await data.json()
   const number = await data.page.totalElements
   let allData = await fetch(url + `&_pageSize=${number}`)
@@ -58,11 +54,7 @@ async function createData (code) {
   const extra = getExtra.reduce((obj, item) => Object.assign(obj, { [item.indicatorDefinitieId]: item.waarde}), {});
 
   const objectArea = Object.assign(extra, {housing:housing}, {oppervlakte:oppervlakte}, {age:age})
-  console.log(objectArea)
-
-  createPie('#woonoppervlakte', objectArea.oppervlakte)
-  createBar('#leeftijd_bevolking', objectArea.age)
-  createPie('#eigendomsverhouding', objectArea.housing)
+  return objectArea
 }
 
-export default createData
+export default getDataArea
