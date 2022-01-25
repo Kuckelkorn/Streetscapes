@@ -1,13 +1,25 @@
+:root{
+--fontstyle: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+--mainGroen: #167A74;
+--mainGrijs: #f2f2f2;
+--mainGeel: #FEC813;
+--tekstWit: #ffffff;
+--tekstZwart: #000000;
+
+
+}
+
 html{
   margin: 0px;
   height: auto;
+  font-family: sans-serif;
 }
 
 body {
     width: 100%;
     height: auto;
     /* margin: 25px auto; */
-    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: var(--fontstyle);
     color: rgb(0, 0, 0);
     /* text-align: center; */
     display: grid;
@@ -26,17 +38,31 @@ body {
   grid-column-end: 4;
   display: grid;
   grid-template-columns: 0.55fr 0.45fr;
-  grid-template-rows: 37em 20em;
+  grid-template-rows: 40em 17em;
+  color: var(--tekstWit);
 }
 
 .block-message{
-  background-color: #167A74;
+  background-color: var(--mainGroen);
   grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display:grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 1fr;
+  
+}
+
+.welkomstBericht {
+  grid-column-start: 2;
+  position: relative;
+  font-size: 1.5em;
 }
 
 .img{
   background-color: honeydew;
   grid-row-start: 1;
+  grid-column-start: 3;
   
 }
 
@@ -44,7 +70,7 @@ body {
 
   display: inline-block;
   width: auto;
-  height: 37em;
+  height: 43em;
   grid-column-start: 2;
 }
 
@@ -52,11 +78,26 @@ body {
   grid-row-start: 2;
   grid-column-start: 1;
   grid-column-end: 4;
-  background-color: #f2f2f2;
-  
+  background-color: var(--mainGrijs);
+  height: 17em;
   width: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
 }
 
+.icoon1 {
+  margin:auto;
+}
+
+.icoon2 {
+  margin:auto;
+}
+
+.icoon3 {
+  margin:auto;
+}
 
 .sectie-2{
   background-color: blueviolet;
@@ -76,7 +117,7 @@ body {
 }
 
 .dataVeld{
-  background-color: #f2f2f2;
+  background-color: var(--mainGrijs);
   grid-column-start: 1;
   grid-column-end: 4;
   
@@ -91,7 +132,7 @@ body {
 .buurtButton{
   width: 50px;
   height: 50px;
-  background-color: #FEC813;
+  background-color: var(--mainGeel);
   left: 16em;
   top: 1em;
   position: relative;
