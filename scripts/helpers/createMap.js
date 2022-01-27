@@ -42,9 +42,7 @@ async function createMap(data){
     }
   })
   /*=========================================
-
   STYLING 
-
   =========================================*/
 
   // Variabele die gebruikt gaat worden voor de styling 

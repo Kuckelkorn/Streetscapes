@@ -20,12 +20,16 @@ const createBarChart = (el, data) => {
   const yAxis = d3.axisLeft().scale(yScale)
   const g_yAxis = g.append('g').attr('class','y axis')
 
+  const xAxis = d3.axisBottom().scale(xScale)
+  const g_xAxis = g.append('g').attr('class','x axis')
+
   function update(data){
     // Defining how to display the data in the dom
     xScale.domain([0, d3.max(data, (d) => d.waarde)])
     yScale.domain(data.map((d) => d.indicator))
 
     g_yAxis.transition().call(yAxis)
+    g_xAxis.transition().call(xAxis)
 
     // making the individual bars
     const rect = g.selectAll('rect').data(data).join(
