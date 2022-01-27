@@ -74,7 +74,7 @@ async function createMap(data){
   //          d > 7500 ? '#00d1c0' : //'#E31A1C' :
   //          d > 5000 ? '#14ffeb' : //'#FC4E2A' :
   //          d > 1000 ? '#57fff1' : //'#FD8D3C' : 
-  //          d > 100 ? '#99fff7' : //'#FEB24C' : hahaha
+  //          d > 100 ? '#99fff7' : //'#FEB24C' : 
   //          d === null ? '#dbfffc' : //'#FED976' :
   //                     '#ffffff';
   // }
@@ -85,7 +85,7 @@ async function createMap(data){
            d > 9000 ? '#003E36' : //'#E31A1C' :
            d > 7000 ? '#146053' : //'#FC4E2A' :
            d > 5000 ? '#27705B' : //'#FD8D3C' : 
-           d > 3000 ? '#3A8063' : //'#FEB24C' : hahaha
+           d > 3000 ? '#3A8063' : //'#FEB24C' : 
            d > 1000 ? '#4E8F6C' : //'#FEB24C' :
            d > 750 ? '#619D75' : //'#FEB24C' :
            d > 500? '#75AB7F' : //'#FEB24C' :
@@ -105,7 +105,7 @@ async function createMap(data){
   //          d > 9000 ? '#27A199' : //'#E31A1C' :
   //          d > 7000 ? '#4AC9C1' : //'#FC4E2A' :
   //          d > 5000 ? '#76F2EA' : //'#FD8D3C' : 
-  //          d > 3000 ? '#94FFF8' : //'#FEB24C' : hahaha
+  //          d > 3000 ? '#94FFF8' : //'#FEB24C' : 
   //          d > 1000 ? '#ABFFF9' : //'#FEB24C' :
   //          d > 750 ? '#C3FFFB' : //'#FEB24C' :
   //          d > 500? '#DAFFFC' : //'#FEB24C' :
@@ -121,7 +121,7 @@ async function createMap(data){
       fillColor: getColor(feature.properties.WDICHT),
       weight: 1.5,
       opacity: 0.7,
-      color: '#FEC813',
+      color: 'white',
       dashArray: '0',
       fillOpacity: 0.8
       };
@@ -138,6 +138,7 @@ async function createMap(data){
 
     layer.setStyle({
         weight: 5,
+        opacity: 1,
         color: '#FEC813',
         dashArray: '',
         fillOpacity: 1
