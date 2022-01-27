@@ -1,26 +1,37 @@
-import createCard from './helpers/createCard.js'
-import getData from './helpers/getData.js'
-import splitString from './helpers/splitID.js'
-import getBuurten from "./findBuurt.js"
+import createMap from './helpers/createMap.js'
+import {getDichtheid, getHuishoudens} from './helpers/getData.js'
 
-function getWijken(stadsdeel){
-  const wijken = fetch(`https://api.data.amsterdam.nl/v1/gebieden/wijken/?_format=geojson&ligtInStadsdeel.identificatie=${stadsdeel}`)
-  wijken
-    .then(response => response.json())
-    .then(data => {
-      data = data.features
-      return data
-    })
-    .then(data => {
-      const div = document.querySelectorAll("#map")
-      for ( let i = 0; i < div.length; i++){
-        div[i].remove()
-      }
-      data.map((obj) => {
-        const id = splitString(obj.properties.id)
-        createCard(obj.properties , () => getBuurten(id), () => getData(obj.properties.code))
+async function getWijken(){
+  const wijken = await fetch(`https://api.data.amsterdam.nl/v1/gebieden/wijken/?_format=geojson`)
+  const geoWijken = await wijken.json()
+
+  const dichtheden = await getDichtheid()
+  const huishoudens = await getHuishoudens()
+
+
+  geoWijken.features.map(async (obj) => {
+    const code = obj.properties.code
+
+    const dichtheid = await dichtheden.find(el => el.gebiedcode15 === code)
+
+    if (dichtheid !== undefined){
+      const indicatorDichtheid = await dichtheid.indicatorDefinitieId
+      const waardeDichtheid = await dichtheid.waarde
+      Object.assign(obj.properties, {
+        [await indicatorDichtheid]: await waardeDichtheid
       })
-    })
+    }
+  
+    const huishouden = await huishoudens.find(el => el.gebiedcode15 === code)
+    if (huishouden !== undefined){
+      const indicatorHuishouden = await huishouden.indicatorDefinitieId
+      const waardeHuishouden = await huishouden.waarde
+      Object.assign(obj.properties, {
+        [await indicatorHuishouden]: await waardeHuishouden
+      })
+    }
+  })
+  createMap(await geoWijken)
 }
 
 export default getWijken

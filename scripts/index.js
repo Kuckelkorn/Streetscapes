@@ -1,7 +1,8 @@
 import getStadsdelen from "./findStadsdeel.js";
-import getData from "./helpers/getData.js";
-import createMap from './helpers/createMap.js'
+import getWijken from "./findWijk.js";
+import createCharts from "./helpers/createCharts.js";
 
-getData('STAD')
-getStadsdelen();
-createMap();
+createCharts('STAD', 'Amsterdam')
+getWijken();
+// createMap();
+

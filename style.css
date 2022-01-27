@@ -1,23 +1,38 @@
+:root{
+--fontstyle: 'Lato', sans-serif, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+--mainGroen: #167A74;
+--mainGrijs: #f2f2f2;
+--mainGeel: #EBAD36;
+--tekstWit: #ffffff;
+--tekstZwart: #000000;
+
+
+}
+
 html{
   margin: 0px;
   height: auto;
+  scroll-behavior: smooth;
 }
 
 body {
     width: 100%;
     height: auto;
     /* margin: 25px auto; */
-    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: var(--fontstyle);
     color: rgb(0, 0, 0);
     /* text-align: center; */
-    display: grid;
+    display: grid; 
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 59em 56em 57em;
     justify-content: stretch;
-    gap: 20px 0px;
+    gap: 1.5em 0px;
     margin: 0px;
-  
+    text-decoration: none;
+    text-decoration-line: none;
   }
+
+
 
 .sectie-1{
   background-color: blue;
@@ -26,26 +41,117 @@ body {
   grid-column-end: 4;
   display: grid;
   grid-template-columns: 0.55fr 0.45fr;
-  grid-template-rows: 37em 20em;
+  grid-template-rows: 38em 21em;
+  color: var(--tekstWit);
 }
 
 .block-message{
-  background-color: #167A74;
+  background-color: var(--mainGroen);
   grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display:grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 16em 13em 9em;
+  
 }
 
-.img{
+.welkomstBericht {
+  font-family: var(--fontstyle);
+  grid-column-start: 2;
+  position: relative;
+  font-size: 1.5em;
+  padding-top: 1.2em;
+}
+
+.welkomstBericht h1 {
+  font-weight: 800;
+}
+
+.paragraaf1 {
+  font-family: var(--fontstyle);
+  grid-column-start: 2;
+  position: relative;
+  font-size: 1.4em;
+}
+
+.paragraaf1 p {
+  font-weight: 300;
+}
+
+.img {
   background-color: honeydew;
   grid-row-start: 1;
+  grid-column-start: 3;
+  
+}
+
+.anchor {
+  grid-row-start: 3;
+  grid-column-start: 2;
+  font-size: 1.4em;
+  height: 2.7em;
+  background-color: var(--mainGeel);
+  width: 9em;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.anchor a {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: var(--tekstZwart);
+
+}
+
+.img img {
+
+  display: inline-block;
+  width: auto;
+  height: 43em;
+  grid-column-start: 2;
 }
 
 .iconen {
   grid-row-start: 2;
   grid-column-start: 1;
   grid-column-end: 4;
-  background-color: #f2f2f2;
-  height: 22em;
+  background-color: var(--mainGrijs);
+  height: 21em;
   width: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 11em 2em 6em 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.icoon1, .icoon2, .icoon3 {
+  margin: 0.5em auto auto auto
+}
+
+.kopje1, .kopje2, .kopje3 {
+  color: var(--mainGroen);
+  font-size: 1.4em;
+  font-weight: 800;
+  text-align: center;
+}
+
+.tekst1, .tekst2, .tekst3 {
+  color: var(--mainGroen);
+  font-size: 1.4em;
+  font-weight: 300;
+  margin: 0 3.2em 0 3.2em;
+  text-align: center;
+}
+
+.arrow {
+  grid-row-start: 4;
+  grid-column-start: 2;
+  margin: 0 auto 0 auto;
 }
 
 
@@ -57,22 +163,20 @@ body {
 }
 
 .sectie-3{
-  height: 59em;
-  width: 100%;
   grid-row-start: 3;
-  background-color: aqua;
+  /* background-color: aqua; */
   grid-column-start: 1;
   grid-column-end: span col3-start;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 7em 52em;
+  grid-template-rows: 7em 50em;
 }
 
 .dataVeld{
-  background-color: #f2f2f2;
+  background-color: var(--mainGrijs);
   grid-column-start: 1;
   grid-column-end: 4;
-  height: 7em;
+  
 }
 
 .visVeld{
@@ -81,27 +185,39 @@ body {
   position: relative;
 }
 
-.buurtButton{
-  width: 50px;
+#toggle{
+  width: 75px;
   height: 50px;
-  background-color: #FEC813;
-  left: 16em;
-  top: 1em;
-  position: relative;
+  background-color: var(--mainGeel);
+  opacity: 80%;
+  left: 26.7em;
+  top: 202em;
+  position: absolute;
+  z-index: 100;
+  border-radius: 25%;
+  /* background: white; */
+  /* background: rgba(255,255,255,0.8); */
+  box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  border: none;
+  align-items: center;
+}
+
+#toggle :hover{
+  opacity: 100%;
+  
+}
+
+
+.map #kaart {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  /* height: 69.3em; */
+  width: auto;
 }
 
 #kaart {
-  grid-row-start: 2;
-  grid-column-start: 2;
-  height: 69.3em;
-  width: auto;
-}
-
-#kaart1 {
-  grid-row-start: 2;
-  grid-column-start: 2;
-  height: 69.3em;
-  width: auto;
+  z-index: 1;
 }
 
 .hide{

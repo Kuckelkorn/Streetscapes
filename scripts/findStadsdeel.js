@@ -1,27 +1,30 @@
-import createCard from './helpers/createCard.js'
-import splitString from './helpers/splitID.js'
-import getWijken from './findWijk.js'
-import getData from './helpers/getData.js'
+import createMap from './helpers/createMap.js'
+import {getDichtheid, getHuishoudens} from './helpers/getData.js'
 
-function getStadsdelen(){
-  const stadsdelen = fetch(`https://api.data.amsterdam.nl/v1/gebieden/stadsdelen/?_format=geojson`)
-  // createMap(stadsdelen)
-  stadsdelen
-    .then(response => response.json())
-    .then(data => {
-      data = data.features
-      return data
-    })
-    .then(data => {
-      const div = document.querySelectorAll("#map div")
-      for ( let i = 0; i < div.length; i++){
-        div[i].remove()
-      }
-      data.map((obj) => {
-        const id = splitString(obj.properties.id)
-        createCard(obj.properties , () => getWijken(id), () => getData(obj.properties.code))
-      })
-    })
+async function getStadsdelen(){
+  const stadsdelen = await fetch(`https://api.data.amsterdam.nl/v1/gebieden/wijken/?_format=geojson`)
+  const geoStadsdelen = await stadsdelen.json()
+
+  const dichtheden = await getDichtheid()
+  const huishoudens = await getHuishoudens()
+
+  await geoStadsdelen.features.map(async function(obj){
+    const code = obj.properties.code
+
+    const dichtheid = await dichtheden.find(el => el.gebiedcode15 === code)
+    const indicatorDichtheid = await dichtheid.indicatorDefinitieId
+    const waardeDichtheid = await dichtheid.waarde
+
+    const huishouden = await huishoudens.find(el => el.gebiedcode15 === code)
+    const indicatorHuishouden = await huishouden.indicatorDefinitieId
+    const waardeHuishouden = await huishouden.waarde
+    
+    Object.assign(obj.properties, {
+      [await indicatorDichtheid]: await waardeDichtheid, 
+      [await indicatorHuishouden]: await waardeHuishouden})
+  })
+
+  createMap(await geoStadsdelen)
 }
 
 export default getStadsdelen
