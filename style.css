@@ -1,8 +1,8 @@
 :root{
---fontstyle: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+--fontstyle: 'Lato', sans-serif, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 --mainGroen: #167A74;
 --mainGrijs: #f2f2f2;
---mainGeel: #FEC813;
+--mainGeel: #EBAD36;
 --tekstWit: #ffffff;
 --tekstZwart: #000000;
 
@@ -12,7 +12,7 @@
 html{
   margin: 0px;
   height: auto;
-  font-family: sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,14 +22,17 @@ body {
     font-family: var(--fontstyle);
     color: rgb(0, 0, 0);
     /* text-align: center; */
-    display: grid;
+    display: grid; 
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 57em 56em 57em;
+    grid-template-rows: 59em 56em 57em;
     justify-content: stretch;
     gap: 1.5em 0px;
     margin: 0px;
-  
+    text-decoration: none;
+    text-decoration-line: none;
   }
+
+
 
 .sectie-1{
   background-color: blue;
@@ -38,7 +41,7 @@ body {
   grid-column-end: 4;
   display: grid;
   grid-template-columns: 0.55fr 0.45fr;
-  grid-template-rows: 40em 17em;
+  grid-template-rows: 38em 21em;
   color: var(--tekstWit);
 }
 
@@ -49,24 +52,62 @@ body {
   grid-column-end: 3;
   display:grid;
   grid-template-columns: 1fr 5fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 16em 13em 9em;
   
 }
 
 .welkomstBericht {
+  font-family: var(--fontstyle);
   grid-column-start: 2;
   position: relative;
   font-size: 1.5em;
+  padding-top: 1.2em;
 }
 
-.img{
+.welkomstBericht h1 {
+  font-weight: 800;
+}
+
+.paragraaf1 {
+  font-family: var(--fontstyle);
+  grid-column-start: 2;
+  position: relative;
+  font-size: 1.4em;
+}
+
+.paragraaf1 p {
+  font-weight: 300;
+}
+
+.img {
   background-color: honeydew;
   grid-row-start: 1;
   grid-column-start: 3;
   
 }
 
-.img img{
+.anchor {
+  grid-row-start: 3;
+  grid-column-start: 2;
+  font-size: 1.4em;
+  height: 2.7em;
+  background-color: var(--mainGeel);
+  width: 9em;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.anchor a {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: var(--tekstZwart);
+
+}
+
+.img img {
 
   display: inline-block;
   width: auto;
@@ -79,25 +120,40 @@ body {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--mainGrijs);
-  height: 17em;
+  height: 21em;
   width: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 11em 2em 6em 2em;
   justify-content: center;
   align-items: center;
 }
 
-.icoon1 {
-  margin:auto;
+.icoon1, .icoon2, .icoon3 {
+  margin: 0.5em auto auto auto
 }
 
-.icoon2 {
-  margin:auto;
+.kopje1, .kopje2, .kopje3 {
+  color: var(--mainGroen);
+  font-size: 1.4em;
+  font-weight: 800;
+  text-align: center;
 }
 
-.icoon3 {
-  margin:auto;
+.tekst1, .tekst2, .tekst3 {
+  color: var(--mainGroen);
+  font-size: 1.4em;
+  font-weight: 300;
+  margin: 0 3.2em 0 3.2em;
+  text-align: center;
 }
+
+.arrow {
+  grid-row-start: 4;
+  grid-column-start: 2;
+  margin: 0 auto 0 auto;
+}
+
 
 .sectie-2{
   background-color: blueviolet;
@@ -108,7 +164,7 @@ body {
 
 .sectie-3{
   grid-row-start: 3;
-  background-color: aqua;
+  /* background-color: aqua; */
   grid-column-start: 1;
   grid-column-end: span col3-start;
   display: grid;
@@ -129,20 +185,39 @@ body {
   position: relative;
 }
 
-.buurtButton{
-  width: 50px;
+#toggle{
+  width: 75px;
   height: 50px;
   background-color: var(--mainGeel);
-  left: 16em;
-  top: 1em;
-  position: relative;
+  opacity: 80%;
+  left: 26.7em;
+  top: 202em;
+  position: absolute;
+  z-index: 100;
+  border-radius: 25%;
+  /* background: white; */
+  /* background: rgba(255,255,255,0.8); */
+  box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+  border: none;
+  align-items: center;
 }
 
-#kaart {
+#toggle :hover{
+  opacity: 100%;
+  
+}
+
+
+.map #kaart {
   grid-row-start: 2;
   grid-column-start: 2;
   /* height: 69.3em; */
   width: auto;
+}
+
+#kaart {
+  z-index: 1;
 }
 
 .hide{
