@@ -11,7 +11,7 @@
 
 html{
   margin: 0px;
-  height: auto;
+  max-height: auto;
   scroll-behavior: smooth;
 }
 
@@ -24,7 +24,7 @@ body {
     /* text-align: center; */
     display: grid; 
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 59em 56em 57em;
+    grid-template-rows: 59em 50em 59em;
     justify-content: stretch;
     gap: 1.5em 0px;
     margin: 0px;
@@ -33,7 +33,11 @@ body {
   }
 
 
+/* =============================
 
+Sectie 1 van de pagina - Intro
+
+============================= */
 .sectie-1{
   background-color: blue;
   grid-row-start: 1;
@@ -154,14 +158,72 @@ body {
   margin: 0 auto 0 auto;
 }
 
+/* =============================
 
+Sectie 2 van de pagina - Uitleg
+
+============================= */
 .sectie-2{
-  background-color: blueviolet;
   grid-row-start: 2;
   grid-column-start: 2;
   grid-column-end: 3;
+  display: grid;
+  grid-template-rows: 11em 28em 11em;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 
+.image {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  align-items: center;
+  margin: auto 0 auto 0;
+}
+
+.image img {
+  width: 41em;
+  height: auto;
+}
+
+.uitleg {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  align-items: center;
+  margin: auto 3em auto 4em;
+  align-items: center;
+}
+.uitleg .heading {
+  font-size: 1.5em;
+  margin-bottom: 2em;
+  margin-top: -0.5em;
+  height: 2em;
+}
+
+.uitleg .heading h1{
+  font-weight: 800;
+  margin: 0;
+}
+
+.uitleg .uitleg-tekst {
+  font-size: 1.4em;
+}
+
+.uitleg .uitleg-tekst p{
+  font-weight: 300;
+}
+
+.uitleg .anchor {
+  margin-top: 2.25em;
+}
+/* =============================
+
+Sectie 3 van de pagina - Tool
+
+============================= */
 .sectie-3{
   grid-row-start: 3;
   /* background-color: aqua; */
@@ -169,7 +231,7 @@ body {
   grid-column-end: span col3-start;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 7em 50em;
+  grid-template-rows: 7em 52em;
 }
 
 .dataVeld{
@@ -189,10 +251,9 @@ body {
   width: 75px;
   height: 50px;
   background-color: var(--mainGeel);
-  opacity: 80%;
-  left: 26.7em;
-  top: 202em;
-  position: absolute;
+  right: -32.2em;
+  top: -5.2em; 
+  position: relative;
   z-index: 100;
   border-radius: 25%;
   /* background: white; */
@@ -218,6 +279,11 @@ body {
 
 #kaart {
   z-index: 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  height: auto;
 }
 
 .hide{
