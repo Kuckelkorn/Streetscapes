@@ -200,7 +200,7 @@ Sectie 2 van de pagina - Uitleg
   font-size: 1.5em;
   margin-bottom: 2em;
   margin-top: -0.5em;
-  height: 2em;
+  height: 1.6em;
 }
 
 .uitleg .heading h1{
@@ -217,7 +217,7 @@ Sectie 2 van de pagina - Uitleg
 }
 
 .uitleg .anchor {
-  margin-top: 2.25em;
+  margin-top: 1.45em;
 }
 /* =============================
 
@@ -238,7 +238,11 @@ Sectie 3 van de pagina - Tool
   background-color: var(--mainGrijs);
   grid-column-start: 1;
   grid-column-end: 4;
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  font-size: 2.1em;
+  font-weight: 800;
 }
 
 .visVeld{
@@ -293,8 +297,8 @@ Sectie 3 van de pagina - Tool
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255,255,255,0.8);
+  background: var(--mainGrijs);
+  background: rgba(255,255,255,1);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
 }
@@ -312,5 +316,5 @@ Sectie 3 van de pagina - Tool
   height: 18px;
   float: left;
   margin-right: 8px;
-  opacity: 0.7;
+  opacity: 1;
 }
