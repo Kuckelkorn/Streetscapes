@@ -6,6 +6,7 @@ import createCharts from './createCharts.js';
 
 async function createMap(data){
   const newData = await data
+  
   // Inladen van de openstreetmap kaart + centreren boven amsterdam
   // Selecteren van de div
   const map = L.map("kaart").setView([52.3546,4.9039], 11);
@@ -48,24 +49,7 @@ async function createMap(data){
   =========================================*/
 
   // Variabele die gebruikt gaat worden voor de styling 
-  let geojson;
-
-  // function findLargestVal(){
-  //   const arr = [];
-  //   data.features.map((obj) =>{
-  //     console.log(obj.properties)
-  //     arr.push(obj.properties.WDICHT)
-  //   })
-
-  //   arr = arr.filter(Number)
-  //   console.log(arr)
-  //   const number = Math.max.apply(null, arr)
-  //   console.log(number)
-  // }
-
-  // findLargestVal();
-
-  
+  let geojson;  
 
   // Schaal voor de kleur adhv data
   function getColor(d) {
@@ -74,7 +58,7 @@ async function createMap(data){
           d >  7500 ? '#00d1c0' : //'#E31A1C' :
           d > 5000 ? '#14ffeb' : //'#FC4E2A' :
           d > 1000 ? '#57fff1' : //'#FD8D3C' : 
-          d > 100 ? '#99fff7' : //'#FEB24C' : hahaha
+          d > 0 ? '#99fff7' : //'#FEB24C' : hahaha
           d === null ? '#dbfffc' : //'#FED976' :
                       '#ffffff';
   }
