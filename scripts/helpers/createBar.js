@@ -1,8 +1,8 @@
 // import * as d3 from 'd3'
 
 const createBarChart = (el, data) => {
-  const margin = {top: 40, bottom: 10, left: 120, right: 20}
-  const width = 300 - margin.left - margin.right
+  const margin = {top: 40, bottom: 10, left: 80, right: 10}
+  const width = 500 - margin.left - margin.right
   const height = 300 - margin.top - margin.bottom
 
   const svg = d3.select(el)
@@ -15,12 +15,12 @@ const createBarChart = (el, data) => {
 
   // Define the x and y axes and their size
   const xScale = d3.scaleLinear().range([0, width])
-  const yScale = d3.scaleBand().range([0, height]).padding(0.5)
+  const yScale = d3.scaleBand().range([0, height]).padding(0.3)
 
   const yAxis = d3.axisLeft().scale(yScale)
   const g_yAxis = g.append('g').attr('class','y axis')
 
-  const xAxis = d3.axisBottom().scale(xScale)
+  const xAxis = d3.axisTop().scale(xScale)
   const g_xAxis = g.append('g').attr('class','x axis')
 
   function update(data){
