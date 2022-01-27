@@ -1,7 +1,9 @@
 # Project Streetscapes
 
-authors:
+Authors:
+
 [Jarno Voogd](https://github.com/JarnoVoogd)
+
 [Remco Kuckelkorn](https://github.com/Kuckelkorn)
 
 ## Assignment
@@ -27,6 +29,7 @@ D3 is a javascript library that manipulates the DOM. It uses your data to for in
 ### Leaflet library and mapbox
 
 [link to Leaflet library](https://leafletjs.com/)
+
 [link to mapbox](https://www.mapbox.com/)
 
 ## Installation

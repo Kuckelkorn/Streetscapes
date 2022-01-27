@@ -47,6 +47,7 @@ const createBarChart = (el, data) => {
       .attr('height', yScale.bandwidth())
       .attr('width', (data) => xScale(data.waarde))
       .attr('y', (data) => yScale(data.indicator))
+      .attr('fill', "#FEC813" )
       .select('title').text((data) => `${data.waarde}`)
   }
   update(data)
