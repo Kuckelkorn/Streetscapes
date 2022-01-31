@@ -188,7 +188,7 @@ async function createMap(data){
 
   // method that we will use to update the control based on feature properties passed
   info.update = function (props) {
-      this._div.innerHTML = '<h4>Woningdichtheid per wijk</h4>' +  (props ?
+      this._div.innerHTML = '<h4>Woningdichtheid per gebied</h4>' +  (props ?
           '<b>' + props.naam + '</b><br />' + props.WDICHT + ' woningen per km2'
           : 'Hover over een buurt');
   };
